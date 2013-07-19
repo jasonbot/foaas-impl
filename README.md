@@ -1,0 +1,1 @@
+Fuck Off As A Service: A Reference Implementation=The following is a reference implementation of what I assume to be a 'joke' standard: [Fuck Off As A Service](http://foaas.herokuapp.com/).It was something to do, and further demonstrates how nice bottle.py is for these kinds of things.
