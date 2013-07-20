@@ -32,7 +32,7 @@ def return_content_type():
     for ret in return_type.split(','):
         if ret in ('text/plain', 'application/json', 'text/html'):
             return ret
-    return 'text/plain'
+    return 'text/plain
 
 def content_type_adjuster(fn):
     @functools.wraps(fn)
@@ -50,55 +50,40 @@ def content_type_adjuster(fn):
             return bootstrap_page.format(items[0], items[1])
     return _fn
 
-@foaas_app.route('/off/<name>/<from>')
-@content_type_adjuster
-def off(**ka):
-    return "Fuck off, {name}. - {from}".format(**ka)
+class TextRoute(object):
+    def __init__(self, app, route, text):
+        app.route(route)(self)
+        self._text = text
+    @content_type_adjuster
+    def __call__(self, **keyword_args):
+        return self._text.format(**keyword_args)
 
-@foaas_app.route('/you/<name>/<from>')
-@content_type_adjuster
-def you(**ka):
-    return "Fuck you, {name}. - {from}".format(**ka)
-
-@foaas_app.route('/this/<from>')
-@content_type_adjuster
-def this(**ka):
-    return "Fuck this - {from}".format(**ka)
-
-@foaas_app.route('/that/<from>')
-@content_type_adjuster
-def that(**ka):
-    return "Fuck that. - {from}".format(**ka)
-
-@foaas_app.route('/everything/<from>')
-@content_type_adjuster
-def everything(**ka):
-    return "Fuck everything. - {from}".format(**ka)
-
-@foaas_app.route('/everyone/<from>')
-@content_type_adjuster
-def everyone(**ka):
-    return "Everyone can go and fuck off. - {name}".format(**ka)
-
-@foaas_app.route('/donut/<name>/<from>')
-@content_type_adjuster
-def donut(**ka):
-    return "{name}, go and take a flying fuck at a rolling donut. - {from}".format(**ka)
-
-@foaas_app.route('/linus/<name>/<from>')
-@content_type_adjuster
-def linus(**ka):
-    return "{name}, there aren't enough swear-words in the English language, so now I'll have to call you perkeleen vittup\xc3\xa4 just to express my disgust and frustration with this crap. - {from}".format(**ka)
-
-@foaas_app.route('/king/<name>/<from>')
-@content_type_adjuster
-def king(**ka):
-    return "Oh fuck off, just really fuck off you total dickface. Christ {name}, you are fucking thick. - {from}".format(**ka)
-
-@foaas_app.route('/pink/<from>')
-@content_type_adjuster
-def pink(**ka):
-    return "Well, Fuck me pink. - {from}".format(**ka)
+routes = (
+    ("/off/:name/:from", "Fuck off, :name. - :from"),
+    ("/you/:name/:from", "Fuck you, :name. - :from"),
+    ("/this/:from", "Fuck this - :from"),
+    ("/that/:from", "Fuck that. - :from"),
+    ("/everything/:from", "Fuck everything. - :from"),
+    ("/everyone/:from", "Everyone can go and fuck off. - :name"),
+    ("/donut/:name/:from", ":name, go and take a flying fuck at a rolling "
+                           "donut. - :from"),
+    ("/shakespeare/:name/:from", ":name, Thou clay-brained guts, thou "
+                                 "knotty-pated fool, thou whoreson obscene "
+                                 "greasy tallow-catch! - :from"),
+    ("/linus/:name/:from", ":name, there aren't enough swear-words in the "
+                           "English language, so now I'll have to call you "
+                           "perkeleen vittup‰‰ just to express my disgust and "
+                           "frustration with this crap. - :from"),
+    ("/king/:name/:from", "Oh fuck off, just really fuck off you total "
+                          "dickface. Christ :name, you are fucking thick. - "
+                          ":from"),
+    ("/pink/:from", "Well, Fuck me pink. - :from"),
+    ("/life/:from", "Fuck my life. - :from"),
+    ("/chainsaw/:name/:from", "Fuck me gently with a chainsaw, :name. Do I "
+                              "look like Mother Teresa? - :from"),
+    ("/:thing/:from", "Fuck :thing. - :from"),
+    ("/thanks/:from", "Fuck you very much. - :from"),
+)
 
 if __name__ == "__main__":
     bottle.run(app=foaas_app, host='0.0.0.0', port=8088, debug=True)
