@@ -51,13 +51,11 @@ def content_type_adjuster(fn):
             return bootstrap_page.format(message=message, subtitle=subtitle)
     return _fn
 
-class TextRoute(object):
-    def __init__(self, app, route, text):
-        app.route(route)(self)
-        self._text = text
+def register_route(app, route, text):
+    @app.route(route)
     @content_type_adjuster
-    def __call__(self, **keyword_args):
-        return self._text.format(**keyword_args)
+    def routed_text(**keyword_args):
+        return text.format(**keyword_args)
 
 def fix_routes(routes):
     variable_re = re.compile("[:]([a-z]+)")
@@ -93,7 +91,7 @@ routes = (
 )
 
 for route_path, route_text in fix_routes(routes):
-    TextRoute(foaas_app, route_path, route_text)
+    register_route(foaas_app, route_path, route_text)
 
 if __name__ == "__main__":
     bottle.run(app=foaas_app, host='0.0.0.0', port=8088, debug=True)
