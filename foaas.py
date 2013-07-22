@@ -21,8 +21,6 @@ bootstrap_page = """
 </html>
 """
 
-foaas_app = bottle.Bottle()
-
 def return_content_type():
     accepted_types = ('text/plain', 'application/json', 'text/html')
     return_type = (bottle.request.query.get('f', None) or 
@@ -62,7 +60,7 @@ def fix_routes(routes):
         yield (variable_re.sub("<\\1>", route_path),
                variable_re.sub("{\\1}", route_text))
 
-routes = (
+foaas_routes = (
     ("/off/:name/:from", "Fuck off, :name. - :from"),
     ("/you/:name/:from", "Fuck you, :name. - :from"),
     ("/this/:from", "Fuck this - :from"),
@@ -89,8 +87,11 @@ routes = (
     ("/thanks/:from", "Fuck you very much. - :from"),
 )
 
-for route_path, route_text in fix_routes(routes):
-    register_route(foaas_app, route_path, route_text)
+def register_foaas_routes(foaas_app):
+    for route_path, route_text in fix_routes(foaas_routes):
+        register_route(foaas_app, route_path, route_text)
 
 if __name__ == "__main__":
+    foaas_app = bottle.Bottle()
+    register_foaas_routes(foaas_app)
     bottle.run(app=foaas_app, host='0.0.0.0', port=8088, debug=True)
