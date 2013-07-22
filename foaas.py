@@ -24,13 +24,12 @@ bootstrap_page = """
 foaas_app = bottle.Bottle()
 
 def return_content_type():
+    accepted_types = ('text/plain', 'application/json', 'text/html')
     return_type = (bottle.request.query.get('f', None) or 
                    bottle.request.headers.get('Accept',
                                               'text/plain'))
-    if return_type in ('text/plain', 'application/json', 'text/html'):
-        return return_type
     for ret in return_type.split(','):
-        if ret in ('text/plain', 'application/json', 'text/html'):
+        if ret.strip().lower() in accepted_types:
             return ret
     return 'text/plain'
 
