@@ -4,6 +4,8 @@ import re
 
 import bottle
 
+__all__ = ['register_foaas_routes']
+
 bootstrap_page = """
 <!DOCTYPE html>
 <html>
@@ -88,6 +90,7 @@ foaas_routes = (
 )
 
 def register_foaas_routes(foaas_app):
+    """Registers the standard FOAAS routes in on bottle.Application instance"""
     for route_path, route_text in fix_routes(foaas_routes):
         register_route(foaas_app, route_path, route_text)
 
