@@ -76,7 +76,7 @@ foaas_routes = (
                                  "greasy tallow-catch! - :from"),
     ("/linus/:name/:from", ":name, there aren't enough swear-words in the "
                            "English language, so now I'll have to call you "
-                           "perkeleen vittupää just to express my disgust and "
+                           "perkeleen vittupï¿½ï¿½ just to express my disgust and "
                            "frustration with this crap. - :from"),
     ("/king/:name/:from", "Oh fuck off, just really fuck off you total "
                           "dickface. Christ :name, you are fucking thick. - "
@@ -87,6 +87,7 @@ foaas_routes = (
                               "look like Mother Teresa? - :from"),
     ("/:thing/:from", "Fuck :thing. - :from"),
     ("/thanks/:from", "Fuck you very much. - :from"),
+    ("/flying/:from", "I don't give a flying fuck. - :from"),
 )
 
 def register_foaas_routes(foaas_app):
