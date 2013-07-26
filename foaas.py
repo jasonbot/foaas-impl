@@ -65,15 +65,15 @@ def fix_routes(routes):
 foaas_routes = (
     ("/off/:name/:from", "Fuck off, :name. - :from"),
     ("/you/:name/:from", "Fuck you, :name. - :from"),
-    ("/this/:from", "Fuck this - :from"),
-    ("/that/:from", "Fuck that. - :from"),
-    ("/everything/:from", "Fuck everything. - :from"),
+    ("/this/:from", "Fuck this. - :from"),
+    ("/that/:from", "Fuck that. - :name"),
+    ("/everything/:from", "Fuck everything. - :name"),
     ("/everyone/:from", "Everyone can go and fuck off. - :name"),
     ("/donut/:name/:from", ":name, go and take a flying fuck at a rolling "
                            "donut. - :from"),
-    ("/shakespeare/:name/:from", ":name, Thou clay-brained guts, thou "
-                                 "knotty-pated fool, thou whoreson obscene "
-                                 "greasy tallow-catch! - :from"),
+    ("/shakespeare/:name/:from", ":name, Thou clay-brained guts, thou knotty-"
+                                 "pated fool, thou whoreson obscene greasy "
+                                 "tallow-catch! - :from"),
     ("/linus/:name/:from", ":name, there aren't enough swear-words in the "
                            "English language, so now I'll have to call you "
                            "perkeleen vittup‰‰ just to express my disgust and "
@@ -81,12 +81,15 @@ foaas_routes = (
     ("/king/:name/:from", "Oh fuck off, just really fuck off you total "
                           "dickface. Christ :name, you are fucking thick. - "
                           ":from"),
-    ("/pink/:from", "Well, Fuck me pink. - :from"),
+    ("/pink/:from", "Well, Fuck me pink. - :name"),
     ("/life/:from", "Fuck my life. - :from"),
     ("/chainsaw/:name/:from", "Fuck me gently with a chainsaw, :name. Do I "
                               "look like Mother Teresa? - :from"),
+    ("/outside/:name/:from", ":name, why don't you go outside and play hide-"
+                             "and-go-fuck-yourself? - :from"),
     ("/:thing/:from", "Fuck :thing. - :from"),
     ("/thanks/:from", "Fuck you very much. - :from"),
+    ("/flying/:from", "I don't give a flying fuck. - :from"),
 )
 
 def register_foaas_routes(foaas_app):
