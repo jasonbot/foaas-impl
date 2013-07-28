@@ -90,9 +90,9 @@ foaas_routes = (
                               "look like Mother Teresa? - :from"),
     ("/outside/:name/:from", ":name, why don't you go outside and play hide-"
                              "and-go-fuck-yourself? - :from"),
-    ("/:thing/:from", "Fuck :thing. - :from"),
     ("/thanks/:from", "Fuck you very much. - :from"),
     ("/flying/:from", "I don't give a flying fuck. - :from"),
+    ("/:thing/:from", "Fuck :thing. - :from"),
 )
 
 def register_foaas_routes(foaas_app):
