@@ -6,18 +6,21 @@ import bottle
 
 __all__ = ['register_foaas_routes']
 
-bootstrap_page = """
-<!DOCTYPE html>
+bootstrap_page = """<!DOCTYPE html>
 <html>
   <head>
-    <title>FOAAS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <title>Fuck Off As A Service (FOAAS)</title>
+    <meta charset="utf-8">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
-  <body>
-    <div class="hero-unit">  
-      <h1>{message}</h1>
-      <p>- {subtitle}</p>
+
+  <body style="margin-top: 40px;">
+    <div class="container">
+      <div id="view-10" view=""><div class="hero-unit">
+        <h1>{message}</h1>
+        <p><em>{subtitle}</em></p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
