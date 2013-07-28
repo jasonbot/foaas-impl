@@ -1,1 +1,6 @@
-Fuck Off As A Service: A Reference Implementation=The following is a reference implementation of what I assume to be a 'joke' standard: [Fuck Off As A Service](http://foaas.herokuapp.com/).It was something to do, and further demonstrates how nice bottle.py is for these kinds of things.
+Fuck Off As A Service: A Reference Implementation
+=
+
+The following is a reference implementation of what I assume to be a 'joke' standard: [Fuck Off As A Service](http://foaas.herokuapp.com/), now also [in a Github repo](https://github.com/xenph/foaas).
+
+It was something to do, and demonstrates how simple and easy bottle.py is to use for this kind of simple REST-y thing.
