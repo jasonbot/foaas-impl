@@ -88,6 +88,8 @@ foaas_routes = (
     ("/life/:from", "Fuck my life. - :from"),
     ("/chainsaw/:name/:from", "Fuck me gently with a chainsaw, :name. Do I "
                               "look like Mother Teresa? - :from"),
+    ("/outside/:name/:from", ":name, why don't you go outside and play hide-"
+                             "and-go-fuck-yourself? - :from"),
     ("/thanks/:from", "Fuck you very much. - :from"),
     ("/flying/:from", "I don't give a flying fuck. - :from"),
     ("/fascinating/:from", "Fascinating story, in what chapter do you shut the "
