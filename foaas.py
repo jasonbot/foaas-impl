@@ -95,6 +95,14 @@ foaas_routes = (
     ("/fascinating/:from", "Fascinating story, in what chapter do you shut the "
                            "fuck up? - :from"),    
     ("/:thing/:from", "Fuck :thing. - :from"),
+    ("/madison/:name/:from", "What you've just said is one of the most "
+                             "insanely idiotic things I have ever heard, "
+                             ":name. At no point in your rambling, incoherent "
+                             "response were you even close to anything that "
+                             "could be considered a rational thought. "
+                             "Everyone in this room is now dumber for having "
+                             "listened to it. I award you no points :name, "
+                             "and may God have mercy on your soul."),
 )
 
 def register_foaas_routes(foaas_app):
